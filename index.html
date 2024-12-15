@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tax Payment Tracker</title>
+    <link rel="stylesheet" href="../static/css/style.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="../static/js/script.js" defer></script>
+</head>
+<body>
+    <h1>Tax Payment Tracker</h1>
+
+    <!-- Form to add a new payment -->
+    <form id="payment-form">
+        <label for="company">Company:</label>
+        <input type="text" id="company" name="company" required><br><br>
+
+        <label for="amount">Amount:</label>
+        <input type="number" id="amount" name="amount" required><br><br>
+
+        <label for="payment_date">Payment Date:</label>
+        <input type="date" id="payment_date" name="payment_date" required><br><br>
+
+        <label for="status">Status:</label>
+        <select id="status" name="status">
+            <option value="paid">Paid</option>
+            <option value="unpaid">Unpaid</option>
+        </select>
+        <br><br>
+
+        <label for="due_datef">Due Date:</label>
+        <select id="due_datef" name="due_datef" required>
+            <!-- Dynamically populated -->
+        </select><br><br>
+
+        <button type="submit">Save Payment</button>
+    </form>
+
+    <!-- Modal for Editing Payment -->
+    <div class="modal" id="editModal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Edit Payment</h2>
+            <form id="edit-payment-form">
+                <label for="edit-company">Company</label>
+                <input type="text" id="edit-company" name="company" required>
+
+                <label for="edit-amount">Amount</label>
+                <input type="number" id="edit-amount" name="amount" required>
+
+                <label for="edit-payment_date">Payment Date</label>
+                <input type="date" id="edit-payment_date" name="payment_date" required>
+
+                <label for="edit-status">Status</label>
+                <select id="edit-status" name="status" required>
+                    <option value="paid">Paid</option>
+                    <option value="unpaid">Unpaid</option>
+                </select>
+
+                <label for="edit-due_date">Due Date</label>
+                <select id="edit-due_date" name="due_date" required>
+                    <!-- Due dates will be dynamically populated in JS -->
+                </select>
+
+                <button type="submit" id="edit-save-btn">Save</button>
+            </form>
+        </div>
+    </div>
+
+
+    <!-- Display Payments Table -->
+    <div class="table-container">
+        <h2>Data Table</h2>
+        <table id="payments-table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Company</th>
+                    <th>Amount</th>
+                    <th>Payment Date</th>
+                    <th>Status</th>
+                    <th>Due Date</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Data will be populated dynamically -->
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Tax Summary Section (Dynamic) -->
+    <div class="table-container">
+        <h2>Tax Table</h2>
+        <label for="due_date_filter">Filter by Due Date:</label>
+        <select id="due_date_filter" name="due_date_filter">
+            <!-- Dynamic dropdown list populated by script.js -->
+        </select>
+        <!-- Tax rate input -->
+        <label for="tax_rate">Enter Tax Rate (e.g., 0.06 for 6%):</label>
+        <input type="text" id="tax_rate" value="0.06" />
+        <br><br>
+        
+        <table id="tax-table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Company</th>
+                    <th>Amount</th>
+                    <th>Payment Date</th>
+                    <th>Status</th>
+                    <th>Due Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Data will be populated dynamically based on the selected due date -->
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>
